@@ -19,7 +19,7 @@ function App() {
             salary: 120000,
             position: "Full Stack Developer",
             company: "Amazon",
-            name: "Bob Johnson"
+            name: "Bob Johnson" 
         }
     ];
     
