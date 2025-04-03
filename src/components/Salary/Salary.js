@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Salary({ job }) {
+function Salary({ jobDetails }) {
   return (
     <div>
-      <h2>Name: {job.name}</h2>
-      <p>Position: {job.position}</p>
-      <p>Company: {job.company}</p>
-      <p>Salary: ${job.salary}</p>
+      <h2>Name: {jobDetails.name}</h2>
+      <p>Position: {jobDetails.position}</p>
+      <p>Company: {jobDetails.company}</p>
+      <p>Salary: ${jobDetails.salary}</p>
     </div>
   );
 }

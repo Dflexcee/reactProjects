@@ -2,7 +2,7 @@ import './App.css';
 import Salary from './components/Salary';
 
 function App() {
-    const jobs = [
+    const jobListings = [
         {
             salary: 100000,
             position: "Senior Developer",
@@ -26,8 +26,8 @@ function App() {
     return (
         <div className="App">
             <h1>Job Listings</h1>
-            {jobs.map((job, index) => (
-                <Salary key={index} job={job} />
+            {jobListings.map((listing, index) => (
+                <Salary key={index} jobDetails={listing} />
             ))}
         </div>
     );
