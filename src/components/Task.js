@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 /**
  * Task Component
@@ -8,15 +8,26 @@ import React, { useState } from 'react';
  * - Delete existing tasks
  * - Mark tasks as complete
  * - Visual feedback for completed tasks
+ * - Persistent storage using localStorage
+ * - Clear all tasks functionality
  * - Clean and modern UI with responsive design
  */
 function Task() {
     // State to store the list of todos
     // Each todo has an id, taskName, and completed status
-    const [todoList, setTodoList] = useState([]);
+    const [todoList, setTodoList] = useState(() => {
+        // Initialize state from localStorage if available
+        const savedTasks = localStorage.getItem('tasks');
+        return savedTasks ? JSON.parse(savedTasks) : [];
+    });
     
     // State to manage the input field for new tasks
     const [newTask, setNewTask] = useState("");
+
+    // Effect to update localStorage whenever todoList changes
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(todoList));
+    }, [todoList]);
 
     /**
      * Handles changes in the input field
@@ -35,6 +46,7 @@ function Task() {
      * - Initializes completion status
      * - Clears input field after adding
      * - Maintains immutability when updating state
+     * - Saves to localStorage automatically
      */
     const addTask = () => {
         // Don't add empty or whitespace-only tasks
@@ -58,6 +70,7 @@ function Task() {
     /**
      * Toggles the completion status of a task
      * @param {number} id - The ID of the task to toggle
+     * Updates localStorage automatically
      */
     const toggleComplete = (id) => {
         setTodoList(todoList.map(task => 
@@ -70,10 +83,18 @@ function Task() {
     /**
      * Deletes a task from the todo list
      * @param {number} id - The ID of the task to delete
-     * Uses filter to create a new array without the specified task
+     * Updates localStorage automatically
      */
     const deleteTask = (id) => {
         setTodoList(todoList.filter((task) => task.id !== id));
+    };
+
+    /**
+     * Clears all tasks from the todo list
+     * Updates localStorage automatically
+     */
+    const clearAllTasks = () => {
+        setTodoList([]);
     };
 
     return (
@@ -83,7 +104,29 @@ function Task() {
             borderRadius: '8px',
             marginTop: '20px'
         }}>
-            <h2 style={{ marginBottom: '20px', color: '#333' }}>Todo List</h2>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '20px'
+            }}>
+                <h2 style={{ color: '#333', margin: 0 }}>Todo List</h2>
+                {todoList.length > 0 && (
+                    <button 
+                        onClick={clearAllTasks}
+                        style={{
+                            padding: '8px 16px',
+                            backgroundColor: '#dc3545',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Clear All Tasks
+                    </button>
+                )}
+            </div>
             
             {/* Task Input Section */}
             <div className="addTask" style={{ marginBottom: '20px' }}>
@@ -133,7 +176,7 @@ function Task() {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <h3 style={{ 
                                 margin: '0',
-                                color: "yellow"
+                                color: task.completed ? '#28a745' : 'inherit'
                             }}>
                                 {task.taskName}
                                 <small style={{ 
