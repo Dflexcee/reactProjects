@@ -2,11 +2,24 @@ import React from 'react';
 
 function Salary({ jobDetails, textColor }) {
   return (
-    <div className="p-6 m-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200">
-      <h2 style={{ color: textColor }}>Name: {jobDetails.name}</h2>
-      <p style={{ color: textColor }}>Position: {jobDetails.position}</p>
-      <p style={{ color: textColor }}>Company: {jobDetails.company}</p>
-      <p className="text-xl font-semibold text-green-600">
+    <div style={{
+      padding: '20px',
+      margin: '10px',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      border: '1px solid #ddd'
+    }}>
+      <h2 style={{ color: textColor, fontSize: '24px', marginBottom: '10px' }}>
+        Name: {jobDetails.name}
+      </h2>
+      <p style={{ color: textColor, fontSize: '18px', marginBottom: '8px' }}>
+        Position: {jobDetails.position}
+      </p>
+      <p style={{ color: textColor, fontSize: '18px', marginBottom: '8px' }}>
+        Company: {jobDetails.company}
+      </p>
+      <p style={{ color: 'green', fontSize: '20px', fontWeight: 'bold' }}>
         Salary: ${jobDetails.salary}
       </p>
     </div>
