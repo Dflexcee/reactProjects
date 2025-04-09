@@ -1,0 +1,48 @@
+.jokes-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.jokes-container h1 {
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.jokes-container > p {
+  color: #666;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.jokes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.joke-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.joke-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.joke-card h3 {
+  color: #007bff;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.joke-card p {
+  color: #495057;
+  font-weight: 500;
+} 

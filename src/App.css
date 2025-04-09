@@ -1,5 +1,15 @@
+/* Base App styling */
 .App {
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content-container {
+  flex: 1;
+  padding: 20px 0;
+  background-color: #f8f9fa;
 }
 
 .App-logo {
@@ -24,6 +34,7 @@
   color: white;
 }
 
+/* Links styling */
 .App-link {
   color: #61dafb;
 }
